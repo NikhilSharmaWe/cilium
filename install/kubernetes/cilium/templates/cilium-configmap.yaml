@@ -213,6 +213,11 @@ data:
   enforce-ingress-https: {{ .Values.ingressController.enforceHttps | quote }}
   enable-ingress-secrets-sync: {{ .Values.ingressController.secretsNamespace.sync | quote }}
   ingress-secrets-namespace: {{ .Values.ingressController.secretsNamespace.name | quote }}
+  {{- if .Values.ingressController.ingressLBAnnotations }}
+  ingress-lb-annotations: {{ .Values.ingressController.ingressLBAnnotations | join " " | quote }}
+  {{- else }}
+  ingress-lb-annotations: {{ .Values.ingressController.ingressLBAnnotationsDefault | join " " | quote }}
+  {{- end }}
 {{- end }}
 
   # Enable IPv4 addressing. If enabled, all endpoints are allocated an IPv4

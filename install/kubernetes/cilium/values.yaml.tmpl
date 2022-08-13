@@ -481,6 +481,12 @@ ingressController:
   # Incoming traffic to http listener will return 308 http error code with respective location in header.
   enforceHttps: true
 
+  # -- IngressLBAnnotations are the annotations which are needed to propogate
+  # from Ingress to the Load Balancer
+  ingressLBAnnotationsDefault: ['service.beta.kubernetes.io', 'service.kubernetes.io', 'cloud.google.com']
+  
+  ingressLBAnnotations: []
+
   # -- SecretsNamespace is the namespace in which envoy SDS will retrieve TLS secrets from.
   secretsNamespace:
     # -- Create secrets namespace for Ingress.
